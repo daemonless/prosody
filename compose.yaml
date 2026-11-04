@@ -1,0 +1,56 @@
+name: prosody
+
+x-daemonless:
+  title: "Prosody"
+  icon: ":simple-xmpp:"
+  category: "Network"
+  description: "Lightweight XMPP chat server, easy to set up and extend."
+  upstream_url: "https://hg.prosody.im/"
+  web_url: "https://prosody.im/"
+  freshports_url: "https://www.freshports.org/net-im/prosody/"
+  user: "bsd"
+  mlock: false
+  community: "Discord:https://discord.gg/Kb9tkhecZT"
+
+  docs:
+    env:
+      PUID: "User ID for the application process"
+      PGID: "Group ID for the application process"
+      TZ: "Timezone for the container"
+      XMPP_DOMAIN: "Domain in user addresses (user@domain)"
+    volumes:
+      /config: "Configuration, certificates and data"
+    ports:
+      5222: "Client connections"
+      5269: "Connections from other XMPP servers"
+
+  readme:
+    setup: |-
+      Create an account:
+
+      ```bash
+      podman exec -it prosody prosodyctl adduser user@your.domain
+      ```
+
+      The first boot creates `/config/prosody.cfg.lua`, and a self-signed certificate for `XMPP_DOMAIN` in `/config/certs`. Clients will warn about that certificate, and other servers will refuse it. To use a real one, replace `<domain>.crt` and `<domain>.key` there and restart the container.
+
+      Modules that serve HTTP, such as WebSocket or file sharing, listen on 5280 and 5281. Enable them in the config and publish those ports.
+
+services:
+  prosody:
+    image: ghcr.io/daemonless/prosody:latest
+    container_name: prosody
+    restart: unless-stopped
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - XMPP_DOMAIN=localhost
+
+    volumes:
+      - /path/to/containers/prosody:/config
+
+    ports:
+      - 5222:5222
+      - 5269:5269

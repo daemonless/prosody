@@ -1,0 +1,23 @@
+# dbuild configuration file
+# Place in .daemonless/config.yaml or .dbuild.yaml (higher priority)
+#
+# Full reference: https://github.com/daemonless/dbuild
+
+icon: ':simple-xmpp:'
+
+build:
+  variants:
+    - tag: pkg
+      containerfile: Containerfile.pkg
+      default: true
+      aliases: ["latest"]
+      tag_desc: "Installed from the FreeBSD quarterly package repository."
+    - tag: pkg-latest
+      containerfile: Containerfile.pkg
+      args:
+        BASE_VERSION: "15.1-latest"
+      tag_desc: "Installed from the FreeBSD latest package repository."
+
+cit:
+  mode: port
+  port: 5222

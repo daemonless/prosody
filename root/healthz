@@ -1,0 +1,3 @@
+#!/bin/sh
+# Prosody is up when the client port accepts a connection.
+exec nc -z -w 5 127.0.0.1 5222

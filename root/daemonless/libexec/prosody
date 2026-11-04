@@ -1,0 +1,4 @@
+#!/bin/sh
+# Start Prosody; /init has already dropped to the run user.
+
+exec /usr/local/bin/prosody
