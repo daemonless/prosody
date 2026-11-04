@@ -173,7 +173,7 @@ Modules that serve HTTP, such as WebSocket or file sharing, listen on 5280 and 5
 | `5222` | TCP | Client connections |
 | `5269` | TCP | Connections from other XMPP servers |
 
-**Architectures:** amd64
+**Architectures:** amd64, aarch64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
 **Base:** FreeBSD 15.1
 

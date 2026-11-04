@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-04T21:42:38Z",
+  "generated": "2026-11-04T22:41:35Z",
   "image": "prosody",
   "tags": {
-    "pkg": {
+    "pkg-amd64": {
       "app_version": "13.0.7",
       "arch": "amd64",
-      "generated": "2026-11-04T21:41:52Z",
+      "generated": "2026-11-04T22:40:21Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -403,10 +403,10 @@
         "total": 53
       }
     },
-    "pkg-latest": {
+    "pkg-latest-amd64": {
       "app_version": "13.0.7",
       "arch": "amd64",
-      "generated": "2026-11-04T21:41:48Z",
+      "generated": "2026-11-04T22:41:03Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
