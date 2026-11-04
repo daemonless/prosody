@@ -6,6 +6,9 @@
 icon: ':simple-xmpp:'
 
 build:
+  architectures:
+    - amd64
+    - aarch64
   variants:
     - tag: pkg
       containerfile: Containerfile.pkg
